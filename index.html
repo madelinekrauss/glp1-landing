@@ -369,6 +369,70 @@
       max-width: 280px;
     }
 
+    /* ── Coach Carousel ── */
+    .coaches {
+      padding: var(--section-py) 0;
+      overflow: hidden;
+    }
+    .coaches-headline {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      text-align: center;
+      margin-bottom: 56px;
+      padding: 0 32px;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      animation: scroll-left 30s linear infinite;
+      width: max-content;
+    }
+    .carousel-track + .carousel-track {
+      margin-top: 20px;
+    }
+    .carousel-track-reverse {
+      animation: scroll-right 30s linear infinite;
+    }
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+    .coach-card {
+      flex-shrink: 0;
+      width: 200px;
+      text-align: center;
+    }
+    .coach-card img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+    .coach-card span {
+      display: block;
+      margin-top: 12px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scroll-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    @media (max-width: 768px) {
+      .coach-card { width: 160px; }
+      .coach-card img { width: 160px; height: 160px; }
+      .carousel-track { gap: 16px; }
+    }
+
     /* ── Coach Difference ── */
     .coach-section {
       background: var(--text);
@@ -604,6 +668,43 @@
       </div>
     </div>
   </section>
+
+  <!-- Coach Carousel -->
+  <div class="coaches">
+    <h2 class="coaches-headline fade-up">A Coach You Can Trust</h2>
+    <!-- Row 1: scrolls left -->
+    <div class="carousel-track">
+      <div class="coach-card"><img src="coaches/amber_mccafferty.png" alt="Amber McCafferty"><span>Amber</span></div>
+      <div class="coach-card"><img src="coaches/rachel_perlman.png" alt="Rachel Perlman"><span>Rachel</span></div>
+      <div class="coach-card"><img src="coaches/andy_britton.png" alt="Andy Britton"><span>Andy</span></div>
+      <div class="coach-card"><img src="coaches/julia_kaufmann.png" alt="Julia Kaufmann"><span>Julia</span></div>
+      <div class="coach-card"><img src="coaches/kaylee_johnson.png" alt="Kaylee Johnson"><span>Kaylee</span></div>
+      <div class="coach-card"><img src="coaches/nicole_belfonti.png" alt="Nicole Belfonti"><span>Nicole</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="coach-card"><img src="coaches/amber_mccafferty.png" alt="Amber McCafferty"><span>Amber</span></div>
+      <div class="coach-card"><img src="coaches/rachel_perlman.png" alt="Rachel Perlman"><span>Rachel</span></div>
+      <div class="coach-card"><img src="coaches/andy_britton.png" alt="Andy Britton"><span>Andy</span></div>
+      <div class="coach-card"><img src="coaches/julia_kaufmann.png" alt="Julia Kaufmann"><span>Julia</span></div>
+      <div class="coach-card"><img src="coaches/kaylee_johnson.png" alt="Kaylee Johnson"><span>Kaylee</span></div>
+      <div class="coach-card"><img src="coaches/nicole_belfonti.png" alt="Nicole Belfonti"><span>Nicole</span></div>
+    </div>
+    <!-- Row 2: scrolls right -->
+    <div class="carousel-track carousel-track-reverse">
+      <div class="coach-card"><img src="coaches/matt_freixa.png" alt="Matt Freixa"><span>Matt</span></div>
+      <div class="coach-card"><img src="coaches/sarah_johnston.png" alt="Sarah Johnston"><span>Sarah</span></div>
+      <div class="coach-card"><img src="coaches/tess_barringer.png" alt="Tess Barringer"><span>Tess</span></div>
+      <div class="coach-card"><img src="coaches/whitney_vaughn.png" alt="Whitney Vaughn"><span>Whitney</span></div>
+      <div class="coach-card"><img src="coaches/toryn_middlekauff.png" alt="Toryn Middlekauff"><span>Toryn</span></div>
+      <div class="coach-card"><img src="coaches/alex_perris.png" alt="Alex Perris"><span>Alex</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="coach-card"><img src="coaches/matt_freixa.png" alt="Matt Freixa"><span>Matt</span></div>
+      <div class="coach-card"><img src="coaches/sarah_johnston.png" alt="Sarah Johnston"><span>Sarah</span></div>
+      <div class="coach-card"><img src="coaches/tess_barringer.png" alt="Tess Barringer"><span>Tess</span></div>
+      <div class="coach-card"><img src="coaches/whitney_vaughn.png" alt="Whitney Vaughn"><span>Whitney</span></div>
+      <div class="coach-card"><img src="coaches/toryn_middlekauff.png" alt="Toryn Middlekauff"><span>Toryn</span></div>
+      <div class="coach-card"><img src="coaches/alex_perris.png" alt="Alex Perris"><span>Alex</span></div>
+    </div>
+  </div>
 
   <!-- Coach Difference -->
   <div class="coach-section">
