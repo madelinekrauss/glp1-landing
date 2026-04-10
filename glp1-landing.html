@@ -334,7 +334,7 @@
     .how-bg {
       position: absolute;
       inset: 0;
-      background: url('glp-steps-bg.png') center 30% / cover no-repeat;
+      background: url('glp-steps-bg.png') center center / cover no-repeat;
     }
     .how-bg::after {
       content: "";
@@ -347,22 +347,23 @@
       z-index: 1;
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: var(--section-py) 32px;
-    }
-    .how-headline {
-      font-family: var(--serif);
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: 0.02em;
-      text-align: left;
-      margin-bottom: 56px;
-      color: #ffffff;
+      padding: 160px 32px;
     }
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      position: relative;
+    }
+    .steps::before {
+      content: "";
+      position: absolute;
+      top: 56px;
+      left: calc(16.666% + 12px);
+      right: calc(16.666% + 12px);
+      height: 1px;
+      background: rgba(255, 255, 255, 0.3);
+      z-index: 1;
     }
     .step {
       background: rgba(255, 255, 255, 0.1);
@@ -610,11 +611,12 @@
       .stat-card { padding: 28px 24px; }
       .stat-number { font-size: 36px; }
 
-      .how-inner { padding-left: 20px; padding-right: 20px; }
+      .how-inner { padding: 80px 20px; }
       .steps {
         grid-template-columns: 1fr;
         gap: 16px;
       }
+      .steps::before { display: none; }
 
       .versus-row {
         grid-template-columns: 1fr;
@@ -698,7 +700,6 @@
   <div class="how-section">
     <div class="how-bg"></div>
     <div class="how-inner">
-      <h2 class="how-headline fade-up">Three steps. Real proof.</h2>
       <div class="steps">
         <div class="step fade-up">
           <div class="step-num">01</div>
