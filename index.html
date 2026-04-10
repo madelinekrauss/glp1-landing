@@ -483,10 +483,10 @@
       .carousel-track { gap: 16px; }
     }
 
-    /* ── Coach Difference ── */
+    /* ── Coach Difference (3-up) ── */
     .coach-section {
-      background: var(--surface);
-      color: var(--text);
+      background: var(--text);
+      color: #ffffff;
       border-radius: 0;
     }
     .coach-wrap {
@@ -502,67 +502,38 @@
       letter-spacing: 0.02em;
       text-align: center;
       max-width: 680px;
-      margin: 0 auto 72px;
-      color: var(--text);
+      margin: 0 auto 64px;
+      color: #ffffff;
     }
-    .versus-list {
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .feature-card {
       display: flex;
       flex-direction: column;
-      gap: 24px;
     }
-    .versus-row {
-      display: grid;
-      grid-template-columns: 1fr 64px 1fr;
-      align-items: stretch;
-      gap: 0;
+    .feature-card-img {
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 24px;
     }
-    .versus-card {
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      border-radius: 16px;
-      padding: 28px 24px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-      display: flex;
-      align-items: center;
+    .feature-card-img img {
+      width: 100%;
+      display: block;
     }
-    .versus-card.old {
-      justify-content: flex-end;
-      text-align: right;
+    .feature-card h3 {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
     }
-    .versus-card .versus-text {
-      font-size: 17px;
-      line-height: 1.5;
-      color: var(--text);
-      font-weight: 500;
-    }
-    .versus-connector {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .versus-connector::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--text);
-      transform: translateY(-50%);
-    }
-    .versus-connector svg {
-      position: relative;
-      z-index: 1;
-      width: 20px;
-      height: 20px;
-      stroke: var(--text);
-      fill: none;
-      stroke-width: 2;
-      background: var(--surface);
-      padding: 2px;
+    .feature-card p {
+      font-size: 15px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.6);
     }
 
     /* ── Bottom CTA ── */
@@ -647,34 +618,9 @@
       .stepper { padding-left: 36px; }
       .stepper-item { padding-bottom: 56px; }
 
-      .versus-row {
+      .feature-grid {
         grid-template-columns: 1fr;
-        gap: 0;
-      }
-      .versus-card.old {
-        text-align: left;
-        justify-content: flex-start;
-        border-radius: 16px 16px 0 0;
-        border-bottom: none;
-      }
-      .versus-connector {
-        height: 40px;
-      }
-      .versus-connector::before {
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        right: auto;
-        width: 2px;
-        height: 100%;
-        transform: none;
-      }
-      .versus-connector svg {
-        transform: rotate(90deg);
-      }
-      .versus-card.new {
-        border-radius: 0 0 16px 16px;
-        border-top: none;
+        gap: 40px;
       }
 
       .bottom-cta .hero-form {
@@ -818,26 +764,21 @@
   <div class="coach-section">
     <div class="coach-wrap">
       <h2 class="coach-headline fade-up">A real human keeps you on track.</h2>
-      <div class="versus-list fade-up">
-        <div class="versus-row">
-          <div class="versus-card old"><div class="versus-text">Most fitness apps</div></div>
-          <div class="versus-connector"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="versus-card new"><div class="versus-text">A coach who knows you're on GLP-1 and adjusts everything around it</div></div>
+      <div class="feature-grid fade-up">
+        <div class="feature-card">
+          <div class="feature-card-img"><img src="glp1-facetime.png" alt="FaceTime call with coach"></div>
+          <h3>Weekly check-ins</h3>
+          <p>Your coach shows up every week, reviews your progress, and adjusts your plan in real time.</p>
         </div>
-        <div class="versus-row">
-          <div class="versus-card old"><div class="versus-text">A calorie tracker</div></div>
-          <div class="versus-connector"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="versus-card new"><div class="versus-text">A recomp protocol built for your body. Training, nutrition, and supplements</div></div>
+        <div class="feature-card">
+          <div class="feature-card-img"><img src="glp1-chat.png" alt="Chat with coach"></div>
+          <h3>Always in your corner</h3>
+          <p>Your coach tells you what the numbers actually mean and builds your protocol around your body.</p>
         </div>
-        <div class="versus-row">
-          <div class="versus-card old"><div class="versus-text">Instagram advice</div></div>
-          <div class="versus-connector"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="versus-card new"><div class="versus-text">Regular check-ins where your coach helps guide you and adjust your plan</div></div>
-        </div>
-        <div class="versus-row">
-          <div class="versus-card old"><div class="versus-text">A doctor tells you you're losing weight</div></div>
-          <div class="versus-connector"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="versus-card new"><div class="versus-text">Real DEXA numbers that tell you whether your efforts are in the right place</div></div>
+        <div class="feature-card">
+          <div class="feature-card-img"><img src="glp1-workout.png" alt="Guided workout"></div>
+          <h3>Guided training</h3>
+          <p>Your coach builds your training, nutrition, and supplementation plan around your body.</p>
         </div>
       </div>
     </div>
