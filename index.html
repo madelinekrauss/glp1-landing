@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Future Pro | GLP-1 Coaching</title>
+  <style>
+    @font-face {
+      font-family: "SeasonMix";
+      src: url("fonts/season-mix/SeasonMix-Light.woff") format("woff");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonMix";
+      src: url("fonts/season-mix/SeasonMix-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonMix";
+      src: url("fonts/season-mix/SeasonMix-Medium.woff") format("woff");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonMix";
+      src: url("fonts/season-mix/SeasonMix-SemiBold.woff") format("woff");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonMix";
+      src: url("fonts/season-mix/SeasonMix-Bold.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonSans";
+      src: url("fonts/season-sans/SeasonSans-Light.woff") format("woff");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonSans";
+      src: url("fonts/season-sans/SeasonSans-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonSans";
+      src: url("fonts/season-sans/SeasonSans-Medium.woff") format("woff");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonSans";
+      src: url("fonts/season-sans/SeasonSans-SemiBold.woff") format("woff");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SeasonSans";
+      src: url("fonts/season-sans/SeasonSans-Bold.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f6;
+      --border: #e1e1e4;
+      --text: #232324;
+      --text-muted: #5a5a5d;
+      --text-disabled: #a0a0a6;
+      --accent: #232324;
+      --accent-hover: #000000;
+      --blue: #85aeff;
+      --blue-soft: #d4e2ff;
+      --serif: "SeasonMix", Georgia, serif;
+      --sans: "SeasonSans", system-ui, -apple-system, sans-serif;
+      --max-w: 1120px;
+      --section-py: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo svg {
+      height: 20px;
+      width: auto;
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 20px;
+      background: var(--text);
+      color: var(--bg);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.8; }
+
+    /* ── Sections ── */
+    .section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: var(--section-py) 32px;
+    }
+
+    /* ── Hero ── */
+    .hero-wrap {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 70% top;
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 120px 32px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 6.5vw, 88px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      max-width: 900px;
+      margin-bottom: 28px;
+    }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 480px;
+      margin-bottom: 48px;
+    }
+    .hero-form {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      max-width: 480px;
+    }
+    .hero-form input {
+      flex: 1;
+      padding: 14px 20px;
+      font-family: var(--sans);
+      font-size: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .hero-form input::placeholder { color: var(--text-disabled); }
+    .hero-form input:focus { border-color: #ffffff; }
+    .hero-form button {
+      padding: 14px 28px;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      background: #ffffff;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .hero-form button:hover { opacity: 0.9; }
+    .hero-trust {
+      margin-top: 16px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ── Problem ── */
+    .problem {
+      background: var(--surface);
+      border-radius: 0;
+    }
+    .problem-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: var(--section-py) 32px;
+    }
+    .problem-headline {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 64px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .stat-card {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+    }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .stat-card h3 {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .stat-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .problem-footer {
+      text-align: center;
+      margin-top: 64px;
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── How It Works ── */
+    .how-headline {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      position: relative;
+    }
+    .step {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .step h3 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    /* ── Coach Difference ── */
+    .coach-section {
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 0;
+    }
+    .coach-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: var(--section-py) 32px;
+    }
+    .coach-headline {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 72px;
+    }
+    .coach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+    }
+    .coach-grid .coach-label {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding-bottom: 24px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .coach-grid .coach-item {
+      font-size: 17px;
+      line-height: 1.5;
+      padding: 16px 0 16px 28px;
+      position: relative;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .coach-grid .coach-item.old::before {
+      content: "×";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .coach-grid .coach-item.new::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    /* ── Bottom CTA ── */
+    .bottom-cta {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .bottom-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      max-width: 560px;
+    }
+    .bottom-cta .sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 440px;
+      line-height: 1.6;
+    }
+    .bottom-cta .hero-form {
+      margin-bottom: 16px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 40px 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-disabled);
+    }
+
+    /* ── Scroll animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      :root {
+        --section-py: 80px;
+      }
+      .nav-inner { padding: 0 20px; }
+      .section { padding-left: 20px; padding-right: 20px; }
+      .problem-wrap, .coach-wrap { padding-left: 20px; padding-right: 20px; }
+
+      .hero { padding: 80px 20px; }
+      .hero h1 { font-size: 40px; }
+      .hero-sub { font-size: 15px; }
+      .hero-form {
+        flex-direction: column;
+      }
+      .hero-form input,
+      .hero-form button {
+        width: 100%;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .stat-card { padding: 28px 24px; }
+      .stat-number { font-size: 36px; }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .coach-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .coach-grid .coach-label:nth-child(2) {
+        padding-top: 32px;
+      }
+
+      .bottom-cta .hero-form {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo"><svg width="191" height="35" viewBox="0 0 191 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.89218 33.9607V14.0127H0V10.0231H4.89218V7.69635C4.89218 2.99221 7.97922 0 12.7766 0H16.7662V3.98961H13.1559C10.924 3.98961 9.49822 5.46282 9.49822 7.83697V10.0214H16.7645V14.0111H9.49822V33.9591H4.89054L4.89218 33.9607Z" fill="#1C1C1E"/><path d="M40.0661 10.0214V33.9591H35.4584V29.7324C34.1765 32.7246 31.2792 34.3401 27.7163 34.3401C22.3009 34.3401 18.7871 30.4453 18.7871 24.7454V10.0214H23.3948V23.8428C23.3948 27.6427 25.6267 30.2082 28.9999 30.2082C32.7524 30.2082 35.4601 27.1686 35.4601 22.9893V10.0214H40.0678H40.0661Z" fill="#1C1C1E"/><path d="M46.9809 2.51801H51.5886V10.0231H58.6653V14.0127H51.5886V25.9815C51.5886 28.5469 53.0128 29.9711 55.2937 29.9711H58.6653V33.9607H54.9601C50.1154 33.9607 46.9809 31.0159 46.9809 26.1237V14.0127H42.0887V10.0231H46.9809V2.51801Z" fill="#1C1C1E"/><path d="M81.9653 10.0214V33.9591H77.3576V29.7324C76.0757 32.7246 73.1783 34.3401 69.6155 34.3401C64.2001 34.3401 60.6863 30.4453 60.6863 24.7454V10.0214H65.294V23.8428C65.294 27.6427 67.5258 30.2082 70.899 30.2082C74.6515 30.2082 77.3593 27.1686 77.3593 22.9893V10.0214H81.9669H81.9653Z" fill="#1C1C1E"/><path d="M95.2144 14.011C90.8455 14.011 89.4197 17.9058 89.4197 23.1299V33.9591H84.812V10.0214H89.4197V14.6291C90.5119 11.4472 92.4119 10.0214 95.7834 10.0214H98.6808V14.011H95.2128H95.2144Z" fill="#1C1C1E"/><path d="M117.059 26.1712C116.394 28.8789 114.114 30.3979 110.599 30.3979C106.42 30.3979 103.475 27.3108 103.094 22.798H121.381C121.428 22.3712 121.475 21.6109 121.475 20.9928C121.475 14.9136 117.533 9.64044 110.123 9.64044C102.713 9.64044 98.5809 15.1507 98.5809 21.8464C98.5809 28.542 103.189 34.3384 110.597 34.3384C116.487 34.3384 120.808 31.1091 121.663 26.1695H117.056L117.059 26.1712ZM110.339 13.3472C114.281 13.3472 116.752 15.7687 117.036 19.4264H103.452C104.165 15.4368 106.586 13.3472 110.339 13.3472Z" fill="#1C1C1E"/><path d="M147.059 1.42422C145.524 0.63447 143.691 0.232239 141.608 0.232239H129.582V33.9608H132.434V19.1633H141.61C143.693 19.1633 145.526 18.7627 147.061 17.9713C148.59 17.1832 149.78 16.0631 150.599 14.6439C151.418 13.2214 151.834 11.5568 151.834 9.69775C151.834 7.83866 151.418 6.17578 150.599 4.75162C149.78 3.33073 148.59 2.21233 147.061 1.42422H147.059ZM147.066 14.5965C145.916 15.8915 144.111 16.5488 141.703 16.5488H132.432V2.84674H141.703C144.111 2.84674 145.916 3.50405 147.066 4.79904C148.21 6.08912 148.791 7.73729 148.791 9.69775C148.791 11.6582 148.21 13.308 147.066 14.5965Z" fill="#1C1C1E"/><path d="M159.707 11.2445C158.665 12.0571 158.024 13.115 157.48 14.2988C157.29 14.7109 157.119 15.275 157.119 15.275V10.0231H154.457V33.9607H157.119V23.5665C157.119 20.141 157.619 17.4104 158.607 15.4532C159.612 13.4584 161.401 12.4463 163.922 12.4463H166.89V10.0214H163.922C162.166 10.0214 160.747 10.4335 159.707 11.2445Z" fill="#1C1C1E"/><path d="M189.074 15.6216C188.051 13.7641 186.607 12.2877 184.781 11.233C182.953 10.1784 180.86 9.64209 178.558 9.64209C176.255 9.64209 174.162 10.1768 172.334 11.233C170.508 12.2893 169.063 13.7658 168.041 15.6216C167.016 17.4807 166.497 19.6243 166.497 21.9919C166.497 24.3595 167.017 26.5031 168.041 28.3622C169.063 30.2197 170.508 31.6961 172.334 32.7508C174.161 33.8054 176.254 34.3417 178.558 34.3417C180.861 34.3417 182.954 33.807 184.781 32.7508C186.607 31.6961 188.051 30.2197 189.074 28.3622C190.098 26.5015 190.618 24.3595 190.618 21.9919C190.618 19.6243 190.098 17.4823 189.074 15.6216ZM186.708 27.1261C185.935 28.6385 184.827 29.8403 183.412 30.6955C181.998 31.5506 180.366 31.9839 178.559 31.9839C176.752 31.9839 175.119 31.5506 173.706 30.6955C172.29 29.8403 171.182 28.6385 170.408 27.1261C169.638 25.6185 169.247 23.8902 169.247 21.9919C169.247 20.0936 169.638 18.3653 170.408 16.8561C171.18 15.3436 172.29 14.1435 173.706 13.2867C175.121 12.4315 176.754 11.9982 178.559 11.9982C180.364 11.9982 181.998 12.4315 183.412 13.2867C184.827 14.1435 185.937 15.3436 186.708 16.8561C187.479 18.3653 187.869 20.0936 187.869 21.9919C187.869 23.8902 187.479 25.6185 186.708 27.1261Z" fill="#1C1C1E"/></svg></a>
+      <a href="#waitlist" class="nav-cta">Join the Waitlist</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero-wrap">
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline poster="glp-hero.jpg">
+        <source src="glp-hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <section class="hero">
+      <h1 class="fade-up">Keep the weight off.<br>Keep the muscle on.</h1>
+      <p class="hero-sub fade-up">Expert GLP-1 coaching backed by real body composition data. See what's actually working.</p>
+      <form class="hero-form fade-up" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Join the Waitlist</button>
+      </form>
+      <p class="hero-trust fade-up">Free to join. Limited spots for our first cohort.</p>
+    </section>
+  </div>
+
+  <!-- Problem -->
+  <div class="problem">
+    <div class="problem-wrap">
+      <h2 class="problem-headline fade-up">GLP-1s work. But they come with a trade-off.</h2>
+      <div class="stat-grid">
+        <div class="stat-card fade-up">
+          <div class="stat-number">40%</div>
+          <h3>Muscle lost with the fat</h3>
+          <p>Up to 40% of weight lost on GLP-1s is lean muscle mass, not just fat. That changes how you look, feel, and move.</p>
+        </div>
+        <div class="stat-card fade-up">
+          <div class="stat-number">⅔</div>
+          <h3>Weight comes back</h3>
+          <p>Two-thirds of weight returns within a year of stopping the drug. Without a plan, the progress doesn't stick.</p>
+        </div>
+        <div class="stat-card fade-up">
+          <div class="stat-number">0</div>
+          <h3>People tracking your muscle</h3>
+          <p>Your doctor tracks your weight. Your app tracks your steps. Nobody is tracking the thing that actually matters.</p>
+        </div>
+      </div>
+      <p class="problem-footer fade-up">Your prescriber owns the drug. But nobody owns the rest. The training, the nutrition, the body composition. That's the gap.</p>
+    </div>
+  </div>
+
+  <!-- How It Works -->
+  <section class="section">
+    <h2 class="how-headline fade-up">Three steps. Real proof.</h2>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h3>Get Scanned</h3>
+        <p>Baseline DEXA body composition scan at a partner facility near you. See exactly where you stand. Muscle, fat, bone, visceral fat.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h3>Get Matched</h3>
+        <p>A dedicated health coach reviews your data, builds your protocol across training, nutrition, and supplements, and checks in every week.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h3>See Proof</h3>
+        <p>Retest at 90 days. Real numbers. Real change. No guessing. Every quarter, you see exactly what's working.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coach Difference -->
+  <div class="coach-section">
+    <div class="coach-wrap">
+      <h2 class="coach-headline fade-up">A real human who reads your data.</h2>
+      <div class="coach-grid fade-up">
+        <div class="coach-label">What you've tried</div>
+        <div class="coach-label">What this is</div>
+        <div class="coach-item old">A generic workout app that doesn't know you're on GLP-1</div>
+        <div class="coach-item new">A coach who reviews your DEXA results and explains what the numbers mean</div>
+        <div class="coach-item old">A calorie tracker that doesn't account for muscle loss</div>
+        <div class="coach-item new">A recomp protocol built for your body. Training, nutrition, and supplements</div>
+        <div class="coach-item old">Instagram advice from people who've never taken the drug</div>
+        <div class="coach-item new">Weekly check-ins where someone asks "did you do it?" and adjusts the plan</div>
+        <div class="coach-item old">Your doctor saying "you're losing weight, great!"</div>
+        <div class="coach-item new">90-day proof that what you're doing is actually working</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <section id="waitlist" class="section bottom-cta">
+    <h2 class="fade-up">Be the first to get matched with a coach.</h2>
+    <p class="sub fade-up">We're accepting a small group to start. Join the waitlist to reserve your spot.</p>
+    <form class="hero-form fade-up" onsubmit="return false;">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Join the Waitlist</button>
+    </form>
+    <p class="hero-trust fade-up">No commitment. We'll reach out when spots open.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>&copy; 2026 Future</span>
+    <span>Questions? hello@future.co</span>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
