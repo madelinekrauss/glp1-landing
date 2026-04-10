@@ -326,78 +326,97 @@
       margin-right: auto;
     }
 
-    /* ── How It Works ── */
-    .how-section {
-      position: relative;
+    /* ── Problem Image ── */
+    .problem-image {
+      margin-top: 64px;
+      border-radius: 20px;
       overflow: hidden;
     }
-    .how-bg {
-      position: absolute;
-      inset: 0;
-      background: url('glp-steps-bg.png') center center / cover no-repeat;
+    .problem-image img {
+      width: 100%;
+      display: block;
     }
-    .how-bg::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-    }
-    .how-inner {
-      position: relative;
-      z-index: 1;
+
+    /* ── How It Works (Scroll Stepper) ── */
+    .how-section {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 160px 32px;
+      padding: var(--section-py) 32px;
     }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    .how-headline {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      margin-bottom: 72px;
+    }
+    .stepper {
+      position: relative;
+      padding-left: 48px;
+    }
+    .stepper-line {
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .stepper-progress {
+      position: absolute;
+      left: 7px;
+      top: 0;
+      width: 2px;
+      height: 0;
+      background: var(--text);
+      transition: height 0.1s linear;
+    }
+    .stepper-knob {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--text);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--text);
+      transition: top 0.1s linear;
+      z-index: 2;
+    }
+    .stepper-item {
+      padding-bottom: 80px;
       position: relative;
     }
-    .steps::before {
-      content: "";
-      position: absolute;
-      top: 56px;
-      left: calc(16.666% + 12px);
-      right: calc(16.666% + 12px);
-      height: 1px;
-      background: rgba(255, 255, 255, 0.3);
-      z-index: 1;
+    .stepper-item:last-child {
+      padding-bottom: 0;
     }
-    .step {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      padding: 32px 28px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    .stepper-item .step-label {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-disabled);
+      margin-bottom: 12px;
     }
-    .step-num {
+    .stepper-item h3 {
       font-family: var(--serif);
-      font-size: 48px;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: rgba(255, 255, 255, 0.4);
-      margin-bottom: 16px;
-      line-height: 1;
-    }
-    .step h3 {
-      font-family: var(--serif);
-      font-size: 26px;
+      font-size: clamp(24px, 3vw, 36px);
       font-weight: 400;
       letter-spacing: 0.02em;
       margin-bottom: 12px;
-      color: #ffffff;
+      color: var(--text);
     }
-    .step p {
-      font-size: 15px;
-      color: rgba(255, 255, 255, 0.65);
+    .stepper-item p {
+      font-size: 16px;
+      color: var(--text-muted);
       line-height: 1.6;
+      max-width: 560px;
+    }
+    .stepper-item.active .step-label {
+      color: var(--text);
     }
 
     /* ── Coach Carousel ── */
@@ -611,12 +630,9 @@
       .stat-card { padding: 28px 24px; }
       .stat-number { font-size: 36px; }
 
-      .how-inner { padding: 80px 20px; }
-      .steps {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .steps::before { display: none; }
+      .how-section { padding: 80px 20px; }
+      .stepper { padding-left: 36px; }
+      .stepper-item { padding-bottom: 56px; }
 
       .versus-row {
         grid-template-columns: 1fr;
@@ -693,29 +709,33 @@
         </div>
       </div>
       <p class="problem-footer fade-up">Your prescriber owns the drug. But nobody owns the rest. The training, the nutrition, the body composition. That's the gap.</p>
+      <div class="problem-image fade-up">
+        <img src="glp-steps-bg.png" alt="Woman stretching" />
+      </div>
     </div>
   </div>
 
   <!-- How It Works -->
   <div class="how-section">
-    <div class="how-bg"></div>
-    <div class="how-inner">
-      <div class="steps">
-        <div class="step fade-up">
-          <div class="step-num">01</div>
-          <h3>Get Scanned</h3>
-          <p>Baseline DEXA body composition scan at a partner facility near you. See exactly where you stand. Muscle, fat, bone, visceral fat.</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">02</div>
-          <h3>Get Matched</h3>
-          <p>A dedicated health coach reviews your data, builds your protocol across training, nutrition, and supplements, and checks in every week.</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">03</div>
-          <h3>See Proof</h3>
-          <p>Retest at 90 days. Real numbers. Real change. No guessing. Every quarter, you see exactly what's working.</p>
-        </div>
+    <h2 class="how-headline fade-up">How it works</h2>
+    <div class="stepper" id="stepper">
+      <div class="stepper-line"></div>
+      <div class="stepper-progress" id="stepper-progress"></div>
+      <div class="stepper-knob" id="stepper-knob"></div>
+      <div class="stepper-item active fade-up" data-step="1">
+        <div class="step-label">Step 01</div>
+        <h3>Get Scanned</h3>
+        <p>Baseline DEXA body composition scan at a partner facility near you. See exactly where you stand. Muscle, fat, bone, visceral fat.</p>
+      </div>
+      <div class="stepper-item fade-up" data-step="2">
+        <div class="step-label">Step 02</div>
+        <h3>Get Matched</h3>
+        <p>A dedicated health coach reviews your data, builds your protocol across training, nutrition, and supplements, and checks in every week.</p>
+      </div>
+      <div class="stepper-item fade-up" data-step="3">
+        <div class="step-label">Step 03</div>
+        <h3>See Proof</h3>
+        <p>Retest at 90 days. Real numbers. Real change. No guessing. Every quarter, you see exactly what's working.</p>
       </div>
     </div>
   </div>
@@ -828,6 +848,36 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Stepper scroll tracking
+    const stepper = document.getElementById('stepper');
+    const knob = document.getElementById('stepper-knob');
+    const progress = document.getElementById('stepper-progress');
+    const items = document.querySelectorAll('.stepper-item');
+
+    if (stepper && knob && progress && items.length) {
+      window.addEventListener('scroll', () => {
+        const rect = stepper.getBoundingClientRect();
+        const stepperTop = rect.top + window.scrollY;
+        const stepperHeight = stepper.offsetHeight;
+        const viewMid = window.scrollY + window.innerHeight * 0.4;
+        const pct = Math.min(Math.max((viewMid - stepperTop) / stepperHeight, 0), 1);
+        const knobY = pct * stepperHeight;
+
+        knob.style.top = knobY + 'px';
+        progress.style.height = knobY + 'px';
+
+        items.forEach(item => {
+          const itemRect = item.getBoundingClientRect();
+          const itemMid = itemRect.top + itemRect.height * 0.3;
+          if (itemMid < window.innerHeight * 0.5) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }, { passive: true });
+    }
   </script>
 
 </body>
