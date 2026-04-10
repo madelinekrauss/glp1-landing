@@ -508,44 +508,30 @@
     .versus-list {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 24px;
     }
     .versus-row {
       display: grid;
-      grid-template-columns: 1fr 80px 1fr;
+      grid-template-columns: 1fr 64px 1fr;
       align-items: stretch;
       gap: 0;
-      opacity: 0.4;
-      transition: opacity 0.5s ease;
-    }
-    .versus-row.active {
-      opacity: 1;
     }
     .versus-card {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       border-radius: 16px;
       padding: 28px 24px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-    }
-    .versus-card.old {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
       display: flex;
       align-items: center;
+    }
+    .versus-card.old {
       justify-content: flex-end;
       text-align: right;
     }
-    .versus-card.old .versus-text {
-      font-size: 17px;
-      line-height: 1.5;
-      color: var(--text-disabled);
-    }
-    .versus-card.new {
-      display: flex;
-      align-items: center;
-    }
-    .versus-card.new .versus-text {
+    .versus-card .versus-text {
       font-size: 17px;
       line-height: 1.5;
       color: var(--text);
@@ -564,34 +550,19 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: var(--border);
+      background: var(--text);
       transform: translateY(-50%);
     }
-    .versus-row.active .versus-connector::before {
-      background: var(--text);
-      transition: background 0.5s ease;
-    }
-    .versus-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--border);
+    .versus-connector svg {
       position: relative;
       z-index: 1;
-      border: 2px solid var(--surface);
-      box-shadow: 0 0 0 2px var(--border);
-      transition: all 0.5s ease;
-    }
-    .versus-row.active .versus-dot {
-      background: var(--text);
-      box-shadow: 0 0 0 2px var(--text);
-    }
-    .versus-row.active .versus-card.old {
-      border-color: var(--border);
-    }
-    .versus-row.active .versus-card.new {
-      border-color: var(--text);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      width: 20px;
+      height: 20px;
+      stroke: var(--text);
+      fill: none;
+      stroke-width: 2;
+      background: var(--surface);
+      padding: 2px;
     }
 
     /* ── Bottom CTA ── */
@@ -687,7 +658,7 @@
         border-bottom: none;
       }
       .versus-connector {
-        height: 48px;
+        height: 40px;
       }
       .versus-connector::before {
         top: 0;
@@ -697,6 +668,9 @@
         width: 2px;
         height: 100%;
         transform: none;
+      }
+      .versus-connector svg {
+        transform: rotate(90deg);
       }
       .versus-card.new {
         border-radius: 0 0 16px 16px;
@@ -844,25 +818,25 @@
   <div class="coach-section">
     <div class="coach-wrap">
       <h2 class="coach-headline fade-up">A real human keeps you on track.</h2>
-      <div class="versus-list" id="versus-list">
-        <div class="versus-row" data-versus>
+      <div class="versus-list fade-up">
+        <div class="versus-row">
           <div class="versus-card old"><div class="versus-text">Most fitness apps</div></div>
-          <div class="versus-connector"><div class="versus-dot"></div></div>
+          <div class="versus-connector"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="versus-card new"><div class="versus-text">A coach who knows you're on GLP-1 and adjusts everything around it</div></div>
         </div>
-        <div class="versus-row" data-versus>
+        <div class="versus-row">
           <div class="versus-card old"><div class="versus-text">A calorie tracker</div></div>
-          <div class="versus-connector"><div class="versus-dot"></div></div>
+          <div class="versus-connector"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="versus-card new"><div class="versus-text">A recomp protocol built for your body. Training, nutrition, and supplements</div></div>
         </div>
-        <div class="versus-row" data-versus>
+        <div class="versus-row">
           <div class="versus-card old"><div class="versus-text">Instagram advice</div></div>
-          <div class="versus-connector"><div class="versus-dot"></div></div>
+          <div class="versus-connector"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="versus-card new"><div class="versus-text">Regular check-ins where your coach helps guide you and adjust your plan</div></div>
         </div>
-        <div class="versus-row" data-versus>
+        <div class="versus-row">
           <div class="versus-card old"><div class="versus-text">A doctor tells you you're losing weight</div></div>
-          <div class="versus-connector"><div class="versus-dot"></div></div>
+          <div class="versus-connector"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="versus-card new"><div class="versus-text">Real DEXA numbers that tell you whether your efforts are in the right place</div></div>
         </div>
       </div>
@@ -897,17 +871,6 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Versus row scroll activation
-    const versusRows = document.querySelectorAll('.versus-row[data-versus]');
-    const versusObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.3, rootMargin: '0px 0px -100px 0px' });
-    versusRows.forEach(row => versusObserver.observe(row));
 
     // Stepper scroll tracking
     const stepper = document.getElementById('stepper');
